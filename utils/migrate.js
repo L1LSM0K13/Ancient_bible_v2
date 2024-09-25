@@ -1,6 +1,7 @@
-import fs from "node:fs/promises";
-import pathUtil from "node:path";
-import { pool } from "../config/dbConfig";
+require("dotenv").config({ path: "./config/.env" });
+const fs = require("node:fs/promises");
+const pathUtil = require("node:path");
+const { pool } = require("../config/dbConfig");
 
 function helpCmd() {
   console.log(
@@ -25,7 +26,7 @@ node migration create my-migration
  * @param fileName
  * @param {string} fileName
  */
-async function createMigration(fileName: string) {
+async function createMigration(fileName) {
   const formattedDate = new Date()
     .toISOString()
     .replace(/[-T:.Z]/g, "")
@@ -54,7 +55,7 @@ async function createMigration(fileName: string) {
   }
 }`;
 
-  const migrationsDir = pathUtil.join(__dirname, "..", "..", "migrations");
+  const migrationsDir = pathUtil.join(__dirname, "..", "migrations");
   try {
     await fs.mkdir(migrationsDir, { recursive: true });
     await fs.writeFile(
@@ -69,7 +70,7 @@ async function createMigration(fileName: string) {
 async function fetchMigrations() {
   const migrations = [];
 
-  const migrationsDir = pathUtil.join(__dirname, "..", "..", "migrations");
+  const migrationsDir = pathUtil.join(__dirname, "..", "migrations");
   console.log(`Looking for migrations in: ${migrationsDir}`);
   const fetchedMigrations = await fs.readdir(migrationsDir);
   fetchedMigrations.sort();
@@ -109,7 +110,7 @@ async function fetchMigrations() {
  * @param {string[]} args
  * @returns {Promise<void>}
  */
-async function main(args: any) {
+async function main(args) {
   if (args.length === 0) {
     helpCmd();
     return;
@@ -131,9 +132,7 @@ async function main(args: any) {
   const appliedMigrationsRes = await pool.query(
     `SELECT name FROM migrations ORDER BY created_ts ASC`,
   );
-  const appliedMigrations = appliedMigrationsRes.rows.map(
-    (row: any) => row.name,
-  );
+  const appliedMigrations = appliedMigrationsRes.rows.map((row) => row.name);
 
   switch (command) {
     case "help":
