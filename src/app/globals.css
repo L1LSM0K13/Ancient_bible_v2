@@ -5,7 +5,7 @@
 @layer components {
     /* BaseNode Class Set */
     body{
-        @apply bg-[#e9eef1]
+        @apply bg-[#e9eef1] dark:bg-[#202124];
     }
 
     .nodeTitleH1Bottom {
