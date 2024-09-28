@@ -8,7 +8,7 @@ export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const navBarClasses = `menuOption p-1 w-full mx-1 duration-150 hover:bg-[#2e3e58] dark:hover:dark:bg-[#202124] rounded-md`;
 
-  const isLoggedIn = cookies().get("Authorization");
+  // const isLoggedIn = cookies().get("Authorization");
 
   function toggleHamMenu() {
     setMenuOpen(!menuOpen);
@@ -82,25 +82,14 @@ export default function NavBar() {
               Support The Project
             </Link>
           </li>
-          {isLoggedIn ? (
-            <li className={"text-center"}>
-              <Link
-                className={`${navBarClasses} ${menuOpen ? "block" : "hidden"} sm:block`}
-                href={"/"}
-              >
-                Log Out
-              </Link>
-            </li>
-          ) : (
-            <li className={"text-center"}>
-              <Link
-                className={`${navBarClasses} ${menuOpen ? "block" : "hidden"} sm:block`}
-                href={"/login"}
-              >
-                Login or Signup
-              </Link>
-            </li>
-          )}
+          <li className={"text-center"}>
+            <Link
+              className={`${navBarClasses} ${menuOpen ? "block" : "hidden"} sm:block`}
+              href={"/login"}
+            >
+              Login or Signup
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

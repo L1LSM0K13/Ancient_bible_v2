@@ -12,34 +12,35 @@ export async function POST(req: Request) {
     return Response.json({ error: "Invalid Email or Password" });
   }
 
-  const user = await pool.query(
-    `SELECT id, email FROM users WHERE email = $1`,
+  const results = await pool.query(
+    `SELECT email, password FROM users WHERE email = $1`,
     [email],
   );
-
+  const user = results.rows[0];
   if (!user) {
     return Response.json({
       error: "User does not exist",
     });
   }
+  console.log(user);
 
-  const isMatch = bcrypt.compare(password, user.password);
-
+  const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     return Response.json({
       error: "Password does not match",
     });
   }
+  console.log(isMatch);
 
   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
   const alg = "HS256";
-
   const jwt = await new jose.SignJWT()
     .setProtectedHeader({ alg })
     .setExpirationTime("72h")
     .setSubject(user.id)
     .sign(secret);
 
-  console.log(jwt, user.id, password);
+  console.log({ JWT: jwt });
+
   return Response.json({ token: jwt });
 }
