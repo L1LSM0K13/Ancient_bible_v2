@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "./config/.env" });
+require("dotenv").config({ path: "../config/.env" });
 const fs = require("node:fs/promises");
 const pathUtil = require("node:path");
 const { pool } = require("../config/dbConfig");
