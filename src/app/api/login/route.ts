@@ -9,7 +9,10 @@ export async function POST(req: Request) {
   const { email, password } = body;
 
   if (!validateEmail(email) || !validatePassword(password)) {
-    return Response.json({ error: "Invalid Email or Password" });
+    return Response.json(
+      { error: "Invalid Email or Password" },
+      { status: 400 },
+    );
   }
 
   const results = await pool.query(
