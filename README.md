@@ -48,6 +48,8 @@ This project is a comprehensive Bible and Early Church Fathers resource website.
    SESSION_SECRET=your_session_secret
    SENDGRID_API_KEY=your_sendgrid_api_key
    APP_DOMAIN=localhost:4000
+   ROOT_URL=http://localhost:3000
+   JWT_SECRET=your_jwt_secret
    ```
 
 4. Start the PostgreSQL database using Docker:

@@ -9,7 +9,11 @@ export default function RegisterForm() {
 
   return (
     <>
-      {error && <p className={"errorMsg"}>{error}</p>}
+      {error && (
+        <div className={"flex justify-center"}>
+          <p className={"errorMsg"}>{error}</p>
+        </div>
+      )}
       <div className="flex justify-center">
         <form className={"text-center"} action={formAction}>
           <div className="m-4">

@@ -3,10 +3,10 @@ import LoginForm from "@/components/UserAuthForms/LoginForm";
 
 export default function Login() {
   return (
-    <>
-      <BaseNode className={"nodeMargins"} title={"Login"}>
+    <main className={"flex justify-center"}>
+      <BaseNode title={"Login"}>
         <LoginForm />
       </BaseNode>
-    </>
+    </main>
   );
 }

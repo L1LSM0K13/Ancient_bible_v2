@@ -3,10 +3,10 @@ import RegisterForm from "@/components/UserAuthForms/RegisterForm";
 
 export default function Register() {
   return (
-    <>
-      <BaseNode className={"nodeMargins"} title={"Register"}>
+    <main className={"flex justify-center"}>
+      <BaseNode title={"Register"}>
         <RegisterForm />
       </BaseNode>
-    </>
+    </main>
   );
 }

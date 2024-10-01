@@ -21,17 +21,13 @@ export async function POST(req: Request) {
   );
   const user = results.rows[0];
   if (!user) {
-    return Response.json({
-      error: "User does not exist",
-    });
+    return Response.json({ error: "User does not exist" }, { status: 400 });
   }
   console.log(user);
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    return Response.json({
-      error: "Password does not match",
-    });
+    return Response.json({ error: "Password does not match" }, { status: 400 });
   }
   console.log(isMatch);
 
