@@ -10,9 +10,9 @@ export default function LoginForm() {
   return (
     <>
       {error && (
-        <div className={"flex justify-center"}>
-          <p className={"errorMsg"}>{error}</p>
-        </div>
+          <div className={"flex justify-center"}>
+            <p className={"errorMsg"}>{error}</p>
+          </div>
       )}
       <div className={"flex justify-center"}>
         <form action={formAction}>

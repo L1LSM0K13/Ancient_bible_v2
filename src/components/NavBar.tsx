@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import {useFormState} from "react-dom";
+import {LogoutAction} from "@/components/UserAuthForms/LogoutAction"
 
 interface NavBarProps {
   isLoggedIn: boolean;
@@ -8,6 +10,8 @@ interface NavBarProps {
 
 export default function NavBar({ isLoggedIn }: NavBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [error, formAction] = useFormState(LogoutAction, undefined);
+
   const navBarClasses = `menuOption p-1 w-full mx-1 duration-150 hover:bg-[#2e3e58] dark:hover:dark:bg-[#202124] rounded-md`;
 
   function toggleHamMenu() {
@@ -93,12 +97,11 @@ export default function NavBar({ isLoggedIn }: NavBarProps) {
                 </Link>
               </li>
               <li className={"text-center"}>
-                <Link
+                <form action={formAction}
                   className={`${navBarClasses} ${menuOpen ? "block" : "hidden"} sm:block`}
-                  href={"/logout"}
                 >
-                  Log Out
-                </Link>
+                  <input type="submit" value={'Log Out'} className={"cursor-pointer"}/>
+                </form>
               </li>
             </>
           ) : (
@@ -113,6 +116,11 @@ export default function NavBar({ isLoggedIn }: NavBarProps) {
           )}
         </ul>
       </div>
+      {error && (
+          <div className={"flex justify-center"}>
+            <p className={"errorMsg"}>{error}</p>
+          </div>
+      )}
     </nav>
   );
 }

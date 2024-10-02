@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 
 export default async function LoginAction(
-  currentState: any,
+  currentState: never,
   formData: FormData,
 ): Promise<string> {
   const email = formData.get("email");
