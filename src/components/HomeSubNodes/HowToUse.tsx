@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function HowToUse() {
   return (
     <>
@@ -9,17 +10,21 @@ export default function HowToUse() {
           logged in you will see an additional option to see your account.
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/navBarNotLoggedIn.png"}
           alt="navigation bar not logged in"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
-        <img
+        <Image
           src={"/features/loggedIn.png"}
           alt="nav bar logged in"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Bible</h1>
         <span>
@@ -32,11 +37,13 @@ export default function HowToUse() {
           back.
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/bookAndChapterDemo.png"}
           alt="book and chapter demo"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Formatting</h1>
         <span>
@@ -47,11 +54,13 @@ export default function HowToUse() {
           formatting options on that page as well.
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/formattingOptionsDemo.png"}
           alt="formatting options demo"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Verse by Verse</h1>
         <span>
@@ -59,11 +68,13 @@ export default function HowToUse() {
           line, by default this will be <strong>OFF</strong>
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/verseByVerseToggled.png"}
           alt="verse by verse toggled"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Red lettering</h1>
         <span>
@@ -72,25 +83,29 @@ export default function HowToUse() {
           will be <strong>ON</strong>
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/redLetteringToggled.png"}
           alt="red lettering toggled"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Font changes</h1>
         <span>
           This is the visual representation of the changes in font size and
           type, there is a default, medium, and large option. For fonts, there
-          is a default (which is your phone/computer's default font), Arial, and
-          Times New Roman.
+          is a default (which is your phone/computer&#39;s default font), Arial,
+          and Times New Roman.
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/largeView.png"}
           alt="large view"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Church Fathers</h1>
         <span>
@@ -100,11 +115,13 @@ export default function HowToUse() {
           ability to make specific note annotations.
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/churchFathersDemo.png"}
           alt="church fathers demo"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Your account</h1>
         <span>
@@ -115,11 +132,13 @@ export default function HowToUse() {
           toggle light and dark mode.
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/userSettingsDemo.png"}
           alt="user settings demo"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Note-taking and highlighting</h1>
         <span>
@@ -132,20 +151,24 @@ export default function HowToUse() {
           commentaries and dissertations
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/noteTakingDemo.png"}
           alt="note taking demo"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">Note and Highlight</h1>
         <span>This is a visual representation of a note and a highlight.</span>
         <hr />
-        <img
+        <Image
           src={"/features/notePostedDemo.png"}
           alt="note posted demo"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">
           Adding more notes and deleting highlights
@@ -156,11 +179,13 @@ export default function HowToUse() {
           you can remove the highlight and replace it with another color.
         </span>
         <hr />
-        <img
+        <Image
           src={"/features/moreNotes.png"}
           alt="more notes"
           className="m-5 border-2 border-[#355488]"
           loading={"lazy"}
+          width={700}
+          height={700}
         />
         <h1 className="font-bold text-2xl">You&apos;re all done!</h1>
         <span className="mb-5">

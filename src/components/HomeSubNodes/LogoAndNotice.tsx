@@ -1,3 +1,4 @@
+import Image from "next/image";
 type LogoAndNoticeTypes = {
   title: string;
   innerNote: string;
@@ -10,11 +11,13 @@ export default function LogoAndNotice({
   return (
     <>
       <div className={"flex justify-center"}>
-        <img
+        <Image
           src={"/logos/ancient-bible-logo.png"}
           alt={"Ancient Bible Website logo"}
           className={"w-1/2 sm:w-1/3 lg:w-1/4"}
           loading={"lazy"}
+          width={500}
+          height={500}
         />
       </div>
 

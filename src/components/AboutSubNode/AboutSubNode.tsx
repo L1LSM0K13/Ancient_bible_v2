@@ -1,14 +1,18 @@
+import Image from "next/image";
+
 export default function AboutSubNode() {
   return (
     <>
       <div className="text-left lg:flex lg:justify-center flex-row items-center">
         <div className="flex justify-center mx-auto w-52 sm:w-60 md:w-72 lg:w-full xl:w-full 2xl:w-96">
           <div className="p-5">
-            <img
+            <Image
               src={"/logos/profilePic.png"}
               alt="profile picture"
               className="border-2 border-black rounded-sm"
               loading={"lazy"}
+              width={400}
+              height={400}
             />
           </div>
         </div>
