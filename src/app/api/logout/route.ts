@@ -1,6 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+
 export async function LogoutAction() {
   const res = await fetch(process.env.ROOT_URL + "/api/logout", {
     method: "POST",

@@ -18,15 +18,15 @@ export default async function LoginAction(
   });
   const json = await res.json();
 
-  cookies().set("Authorization", json.token, {
-    secure: true,
-    httpOnly: true,
-    expires: Date.now() + 24 * 60 * 60 * 1000 * 3,
-    path: "/",
-    sameSite: "strict",
-  });
-
   if (res.ok) {
+    cookies().set("Authorization", json.token, {
+      secure: true,
+      httpOnly: true,
+      expires: Date.now() + 24 * 60 * 60 * 1000 * 3,
+      path: "/",
+      sameSite: "strict",
+    });
+
     redirect("/");
   } else {
     return json.error;
