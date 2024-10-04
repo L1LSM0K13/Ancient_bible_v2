@@ -23,13 +23,10 @@ export async function POST(req: Request) {
   if (!user) {
     return Response.json({ error: "User does not exist" }, { status: 400 });
   }
-  console.log(user);
-
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     return Response.json({ error: "Password does not match" }, { status: 400 });
   }
-  console.log(isMatch);
 
   const secret = new TextEncoder().encode(process.env.JWT_SECRET);
   const alg = "HS256";
@@ -38,8 +35,6 @@ export async function POST(req: Request) {
     .setExpirationTime("72h")
     .setSubject(user.id)
     .sign(secret);
-
-  console.log({ JWT: jwt });
 
   return Response.json({ token: jwt });
 }
