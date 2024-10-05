@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 import { books } from "@/assets/BookTitles/BibleMenu";
 import Formatting from "@/components/ReadingComponents/Formatting";
 import BaseNode from "@/components/BaseNode";
+import Note from "@/components/ReadingComponents/Note";
 
-export default function BibleLoader() {
+interface BibleProps {
+  isLoggedIn: boolean;
+}
+
+export default function BibleLoader({ isLoggedIn }: BibleProps) {
   const [book, setBook] = useState(() => {
     const savedBook = window.localStorage.getItem("saved_book");
     return savedBook !== null ? JSON.parse(savedBook) : "genesis.json";
@@ -30,17 +35,17 @@ export default function BibleLoader() {
     return savedRedLettering !== null ? JSON.parse(savedRedLettering) : true;
   });
 
-  const handleFontChanges = (newFont) => setFontType(newFont);
-  const handleSizeChange = (newSize) => setFontSize(newSize);
-  const handleGridChange = (newState) => setGrid(newState);
-  const handeRedLetteringChange = (newState) => setIsRed(newState);
-  const handleBookChange = (newState) => {
+  const handleFontChanges = (newFont: string) => setFontType(newFont);
+  const handleSizeChange = (newSize: string) => setFontSize(newSize);
+  const handleGridChange = (newState: string) => setGrid(newState);
+  const handeRedLetteringChange = (newState: boolean) => setIsRed(newState);
+  const handleBookChange = (newState: never) => {
     if (newState !== book) {
       setBook(newState);
       setChapter(1);
     }
   };
-  const handleChapterChange = (newState) => {
+  const handleChapterChange = (newState: number) => {
     setChapter(newState);
   };
 
@@ -84,6 +89,7 @@ export default function BibleLoader() {
             "xl:col-start-1 xl:col-span-1 sm:col-start-2 sm:col-span-2 col-start-1 col-span-full"
           }
         >
+          {/*Navigation node*/}
           <BaseNode title={"Navigate"}>
             <div className="grid grid-cols-2 gap-1">
               <select
@@ -112,6 +118,7 @@ export default function BibleLoader() {
             </div>
           </BaseNode>
 
+          {/*Formatting node*/}
           <BaseNode title={"Formatting Options"}>
             <Formatting
               isBible={true}
@@ -123,6 +130,7 @@ export default function BibleLoader() {
           </BaseNode>
         </div>
         <div className={"xl:col-span-3 col-span-full"}>
+          {/*Text loading node*/}
           <BaseNode
             title={`Book of ${data.book} Chapter ${selectedChapter.chapter}`}
           >
@@ -137,6 +145,7 @@ export default function BibleLoader() {
                   }}
                 >
                   <span className="font-bold">{verse.verse}</span> {verse.text}
+                  {isLoggedIn && <Note />}
                 </span>
               ))}
             </div>
