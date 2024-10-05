@@ -82,9 +82,6 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
 
   const selectedChapter = data?.chapters[chapter - 1] || { verses: [] };
 
-  // User Notes
-  // const note = FetchNoteData.filter(async (note) => note.verse_id === verse)
-
   return (
     <>
       <div className={"grid grid-cols-4 grid-rows-1 gap-5 nodeMargins"}>
@@ -139,7 +136,34 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
             title={`Book of ${data.book} Chapter ${selectedChapter.chapter}`}
           >
             <div className={grid ? "grid" : ""}>
+              {/*{selectedChapter.verses.map((verse) => {*/}
+              {/*  // const note = FetchNoteData.filter(*/}
+              {/*  //   (note) => note.verse_id === verse.id,*/}
+              {/*  // );*/}
               {selectedChapter.verses.map((verse: string, idx: number) => (
+                <span
+                  id={verse.id}
+                  key={idx}
+                  className={`m-1 p-1 ${fontSize} ${verse.isRed && isRed ? "text-red-600" : ""}`.trim()}
+                  style={{
+                    fontFamily: fontType,
+                  }}
+                >
+                  <span className="font-bold">{verse.verse}</span> {verse.text}
+                  {isLoggedIn && (
+                    // <Note
+                    //   noteID={note.id}
+                    //   noteText={note.text}
+                    //   bookName={""}
+                    //   chapterNumber={0}
+                    //   verseNumber={0}
+                    // />
+                    <p>WORKED</p>
+                  )}
+                </span>
+              ))}
+              ; ) ;
+              {/*  selectedChapter.verses.map((verse: string, idx: number) => (
                 <span
                   id={verse.id}
                   key={idx}
@@ -158,7 +182,7 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
                     />
                   )}
                 </span>
-              ))}
+              ))*/}
             </div>
           </BaseNode>
         </div>
