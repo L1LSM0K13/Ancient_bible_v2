@@ -1,4 +1,6 @@
-export default function Note() {
+import { FetchNoteData } from "@/components/ReadingComponents/FetchNoteData";
+
+export default function Note({ noteID, userID, verseID, fathersID }) {
   return (
     <>
       <div className="flex">
@@ -9,7 +11,7 @@ export default function Note() {
             </strong>
           </span>
 
-          <p>This is a note</p>
+          <op>{note.text}</op>
 
           <div className="flex justify-end">
             <form action="/users/bible/action/note" method="POST">

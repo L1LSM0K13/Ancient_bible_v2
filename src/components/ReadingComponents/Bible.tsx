@@ -5,6 +5,7 @@ import { books } from "@/assets/BookTitles/BibleMenu";
 import Formatting from "@/components/ReadingComponents/Formatting";
 import BaseNode from "@/components/BaseNode";
 import Note from "@/components/ReadingComponents/Note";
+import { FetchNoteData } from "@/components/ReadingComponents/FetchNoteData";
 
 interface BibleProps {
   isLoggedIn: boolean;
@@ -81,6 +82,9 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
 
   const selectedChapter = data?.chapters[chapter - 1] || { verses: [] };
 
+  // User Notes
+  // const note = FetchNoteData.filter(async (note) => note.verse_id === verse)
+
   return (
     <>
       <div className={"grid grid-cols-4 grid-rows-1 gap-5 nodeMargins"}>
@@ -145,7 +149,14 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
                   }}
                 >
                   <span className="font-bold">{verse.verse}</span> {verse.text}
-                  {isLoggedIn && <Note />}
+                  {isLoggedIn && (
+                    <Note
+                      noteID={undefined}
+                      userID={undefined}
+                      verseID={verse.id}
+                      fathersID={undefined}
+                    />
+                  )}
                 </span>
               ))}
             </div>

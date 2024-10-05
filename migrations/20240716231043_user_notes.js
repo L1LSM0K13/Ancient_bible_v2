@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'user_notes',
+  name: "user_notes",
 
   /**
    * Applies the migration
@@ -14,13 +14,10 @@ module.exports = {
       user_id int4 NOT NULL,
       verse_id int4 NULL,
       fathers_id int4 NULL,
-      book_title text NOT NULL,
-      chapter_number int2 NOT NULL,
-      verse_number int2 NOT NULL,
       CONSTRAINT user_notes_pkey PRIMARY KEY (id)
 );
     ALTER TABLE public.user_notes ADD CONSTRAINT user_notes_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(id);
-    `)
+    `);
   },
 
   /**
@@ -28,6 +25,6 @@ module.exports = {
    * @param {import('pg').Pool} pool
    */
   revert: async function (pool) {
-    await pool.query(`DROP TABLE public.user_notes`)
-  }
-}
+    await pool.query(`DROP TABLE public.user_notes`);
+  },
+};
