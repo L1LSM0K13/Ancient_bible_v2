@@ -1,17 +1,15 @@
-import { FetchNoteData } from "@/components/ReadingComponents/FetchNoteData";
-
-export default function Note({ noteID, userID, verseID, fathersID }) {
+export default function Note() {
   return (
     <>
       <div className="flex">
         <div className="noteDiv p-5">
           <span className="dark:text-black">
             <strong>
-              On {"John"} - {8}:{58}
+              {/*  TODO add the note info that matches the users id */}
             </strong>
           </span>
 
-          <op>{note.text}</op>
+          <p>{"NOTE"}</p>
 
           <div className="flex justify-end">
             <form action="/users/bible/action/note" method="POST">
@@ -30,7 +28,7 @@ export default function Note({ noteID, userID, verseID, fathersID }) {
                   <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
                 </svg>
               </button>
-              <input type="hidden" name="note_id" value={"Null"} />
+              <input type="hidden" name="note_id" value={"NULL"} />
             </form>
           </div>
         </div>

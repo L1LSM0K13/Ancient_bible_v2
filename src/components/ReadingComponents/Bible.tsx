@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { books } from "@/assets/BookTitles/BibleMenu";
 import Formatting from "@/components/ReadingComponents/Formatting";
 import BaseNode from "@/components/BaseNode";
-import Note from "@/components/ReadingComponents/Note";
-import { FetchNoteData } from "@/components/ReadingComponents/FetchNoteData";
 
 interface BibleProps {
   isLoggedIn: boolean;
@@ -40,7 +38,7 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
   const handleSizeChange = (newSize: string) => setFontSize(newSize);
   const handleGridChange = (newState: string) => setGrid(newState);
   const handeRedLetteringChange = (newState: boolean) => setIsRed(newState);
-  const handleBookChange = (newState: never) => {
+  const handleBookChange = (newState: any) => {
     if (newState !== book) {
       setBook(newState);
       setChapter(1);
@@ -82,9 +80,6 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
 
   const selectedChapter = data?.chapters[chapter - 1] || { verses: [] };
 
-  // User Notes
-  // const note = FetchNoteData.filter(async (note) => note.verse_id === verse)
-
   return (
     <>
       <div className={"grid grid-cols-4 grid-rows-1 gap-5 nodeMargins"}>
@@ -113,7 +108,7 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
                 onChange={(e) => handleChapterChange(parseInt(e.target.value))}
                 value={chapter}
               >
-                {data?.chapters.map((_, index: number) => (
+                {data?.chapters.map((_: never, index: number) => (
                   <option key={index + 1} value={index + 1}>
                     Chapter {index + 1}
                   </option>
@@ -149,14 +144,7 @@ export default function BibleLoader({ isLoggedIn }: BibleProps) {
                   }}
                 >
                   <span className="font-bold">{verse.verse}</span> {verse.text}
-                  {isLoggedIn && (
-                    <Note
-                      noteID={undefined}
-                      userID={undefined}
-                      verseID={verse.id}
-                      fathersID={undefined}
-                    />
-                  )}
+                  {isLoggedIn && <p>Worked</p>}
                 </span>
               ))}
             </div>
