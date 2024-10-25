@@ -12,7 +12,7 @@ interface NavBarProps {
 
 export default function NavBar({ isLoggedIn }: NavBarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [error, formAction] = useFormState(LogoutAction, undefined);
+  const [error, setLogoutAction] = useFormState(LogoutAction, undefined);
   const router = useRouter();
 
   const navBarClasses = `menuOption p-1 w-full mx-1 duration-150 hover:bg-[#2e3e58] dark:hover:dark:bg-[#202124] rounded-md`;
@@ -24,7 +24,7 @@ export default function NavBar({ isLoggedIn }: NavBarProps) {
   async function handleLogout(e: React.FormEvent) {
     e.preventDefault();
 
-    formAction();
+    setLogoutAction();
     router.refresh();
   }
 

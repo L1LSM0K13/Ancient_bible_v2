@@ -5,7 +5,7 @@ import SignUpAction from "@/app/(users)/register/SignUpAction";
 import { useFormState } from "react-dom";
 
 export default function RegisterForm() {
-  const [error, formAction] = useFormState(SignUpAction, undefined);
+  const [error, setSignUpAction] = useFormState(SignUpAction, undefined);
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function RegisterForm() {
         </div>
       )}
       <div className="flex justify-center">
-        <form className={"text-center"} action={formAction}>
+        <form className={"text-center"} action={setSignUpAction}>
           <div className="m-4">
             <input
               className="input"

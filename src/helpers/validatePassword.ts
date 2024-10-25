@@ -1,4 +1,4 @@
-export default function validatePassword(password: string) {
+export default function validatePassword(password: any | string) {
   const regex =
     /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
   return regex.test(password);
